@@ -66,8 +66,32 @@ int main()
   cout << "Copy!!!!!!!! " + sqr2.toString();
   cout << "Copy!!!!!!!! " + ova2.toString();
 
-  List<char> l;
-  l.testList();
+  List<int> l;
+  l.InsertItem(1);
+  l.InsertItem(2);
+  l.InsertItem(3);
+  l.InsertItem(4);
+  List<int> l2;
+  l2.InsertItem(12);
+  l2.InsertItem(23);
+  l2.InsertItem(33);
+  l2.InsertItem(44);
+
+  l.printListtest();
+  cout << "\n";
+
+  l.ClearList();
+  l.InsertItem(100);
+  cout << "\n";
+  l.printListtest();
+  // l.SwapLists(l2);
+  cout << "\n";
+  l.printListtest();
+  l.DeleteItem();
+  l.DeleteItem();
+  l.DeleteItem();
+  l.DeleteItem();
+  l.printListtest();
 
   return 0;
 }

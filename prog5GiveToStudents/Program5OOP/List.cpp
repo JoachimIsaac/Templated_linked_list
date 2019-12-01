@@ -7,9 +7,11 @@
 template <class ItemType>
 List<ItemType>::List()
 {
-
-    this->head = nullptr;
-    this->cursor = nullptr;
+    ListNode *dummy;
+    dummy = new ListNode;
+    dummy->next = nullptr;
+    this->head = dummy;
+    this->cursor = dummy;
     this->count = 0;
 
 } //  defaultconstructor
@@ -40,10 +42,20 @@ List<ItemType>::List()
 // }
 
 template <class ItemType>
-void List<ItemType>::testList()
+void List<ItemType>::printListtest()
 {
+    if (count == 0)
+    {
+        cout << "This list is empty";
+    }
 
-    cout << "working!!!!";
+    ListNode *tmp;
+    tmp = this->head->next;
+    while (tmp != nullptr)
+    {
+        cout << tmp->item << "  -->  ";
+        tmp = tmp->next;
+    }
 }
 
 template <class ItemType>
@@ -57,47 +69,57 @@ List<ItemType>::~List()
 
 } // destructor
 
-// template <class ItemType>
-// void List<ItemType>::SwapLists(List &other)
-// {
-//     ListNode *temp;
-//     int tempCount;
+template <class ItemType>
+void List<ItemType>::SwapLists(List &other)
+{
+    ListNode *temp;
+    int tempCount;
 
-//     //swap cursors
-//     temp = cursor;
-//     cursor = other.cursor;
-//     other.cursor = temp;
+    //swap cursors
+    temp = cursor;
+    cursor = other.cursor;
+    other.cursor = temp;
 
-//     //swap heads
-//     temp = head;
-//     head = other.head;
-//     other.head = temp;
+    //swap heads
+    temp = head;
+    head = other.head;
+    other.head = temp;
 
-//     //swap counts
-//     tempCount = count;
-//     count = other.count;
-//     other.count = count;
-// }
+    //swap counts
+    tempCount = count;
+    count = other.count;
+    other.count = count;
+}
 
-// template <class ItemType>
-// void List<ItemType>::ClearList()
-// {
-//     ResetCursor();
-//     while (!CursorAtEnd())
-//         DeleteItem();
-// }
+template <class ItemType>
+void List<ItemType>::ClearList()
+{
+    ResetCursor();
+    while (!CursorAtEnd())
+        DeleteItem();
+}
 
-// template <class ItemType>
-// void List<ItemType>::ResetCursor()
-// {
+template <class ItemType>
+void List<ItemType>::ResetCursor()
+{
 
-// } // reset cursor
+    this->cursor = head->next;
 
-// template <class ItemType>
-// bool List<ItemType>::CursorAtEnd()
-// {
+} // reset cursor
 
-// } // cursor at end
+template <class ItemType>
+bool List<ItemType>::CursorAtEnd()
+{
+    if (cursor->next == nullptr)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+
+} // cursor at end
 
 // template <class ItemType>
 // void List<ItemType>::GetCurrentItem(ItemType &Item)
@@ -114,42 +136,61 @@ List<ItemType>::~List()
 //         cursor->next->item = Item;
 // } // get current item
 
-// template <class ItemType>
-// void List<ItemType>::AdvanceCursor()
-// {
-//     if (cursor->next == NULL)
-//         cout << "ERROR : cursor at end cannot advance cursor" << endl;
-//     else
-//         cursor = cursor->next;
-// } // advance cursor
+template <class ItemType>
+void List<ItemType>::AdvanceCursor()
+{
+    if (cursor->next == NULL)
+        cout << "ERROR : cursor at end cannot advance cursor" << endl;
+    else
+        cursor = cursor->next;
+} // advance cursor
 
-// template <class ItemType>
-// void List<ItemType>::InsertItem(const ItemType &Item)
-// {
-//     ListNode *temp;
+template <class ItemType>
+void List<ItemType>::InsertItem(const ItemType &Item)
+{
+    ListNode *temp;
+    if (cursor != head)
+    {
+        ResetCursor();
+    }
 
-//     count++;
-// }
+    if (count == 0)
+    {
+        temp = new ListNode;
+        temp->item = Item;
+        temp->next = nullptr;
+        cursor->next = temp;
+    }
+    else
+    {
+        temp = new ListNode;
+        temp->item = Item;
+        temp->next = cursor->next;
+        cursor->next = temp;
+    }
 
-// template <class ItemType>
-// void List<ItemType>::DeleteItem()
-// {
+    count++;
+}
 
-//     ListNode *temp;
+template <class ItemType>
+void List<ItemType>::DeleteItem()
+{
 
-//     if (cursor->next == NULL)
-//         cout << "ERROR : cursor at end cannot delete item" << endl;
-//     else
-//     {
-//         temp = cursor->next;
-//         cursor->next = temp->next;
-//         delete temp;
-//         count--;
-//     }
-// } // delete item
+    ListNode *temp;
 
-// template <class ItemType>
-// int List<ItemType>::getCount()
-// {
-//     return count;
-// }
+    if (cursor->next == NULL)
+        cout << "ERROR : cursor at end cannot delete item" << endl;
+    else
+    {
+        temp = cursor->next;
+        cursor->next = temp->next;
+        delete temp;
+        count--;
+    }
+} // delete item
+
+template <class ItemType>
+int List<ItemType>::getCount()
+{
+    return this->count;
+}
