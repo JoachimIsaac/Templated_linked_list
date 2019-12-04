@@ -1,6 +1,5 @@
 //Catherine Stringfellow  AND
 //Shapes.h declares AND DEFINES an inheritance hierarchy of shapes: Shape, Oval, Circle, Rectangle, Square
-
 #pragma once
 #include <iostream>
 #include <string>

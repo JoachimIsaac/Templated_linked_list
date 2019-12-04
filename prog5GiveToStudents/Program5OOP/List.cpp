@@ -2,8 +2,6 @@
 //File: List.cpp
 //Date:
 
-// #include "List.h"
-
 template <class ItemType>
 List<ItemType>::List()
 {

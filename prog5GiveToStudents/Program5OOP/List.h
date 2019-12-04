@@ -1,3 +1,6 @@
+#include <iostream>
+
+using namespace std;
 
 template <class ItemType>
 class List
@@ -83,4 +86,4 @@ private:
 	int count;
 };
 
-// #include "List.cpp"
+#include "List.cpp"

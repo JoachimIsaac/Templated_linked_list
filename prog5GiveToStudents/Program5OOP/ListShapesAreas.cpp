@@ -3,13 +3,12 @@
 //ListShapesAreas.cpp - reads a list of shapes and their dimensions from a file and
 //outputs their areas and the cumulative area.
 
-#include <iostream>
+//#include <iostream>
 #include <fstream>
 #include <string>
 #include <vector>
 #include "List.h"
 #include "Shapes.h"
-#include "List.cpp"
 
 using namespace std;
 
