@@ -46,51 +46,38 @@ int main()
 
   //print the cumulative area
 
-  Rect rect("Rectangle", 2, 3);
-  Square sqr("Square", 5);
-  Oval ova("Oval", 3, 5);
-  Circle circ("Circle", 6);
+  // Rect rect("Rectangle", 2, 3);
+  // Square sqr("Square", 5);
+  // Oval ova("Oval", 3, 5);
+  // Circle circ("Circle", 6);
 
-  cout << rect.toString();
-  cout << sqr.toString();
-  cout << ova.toString();
-  cout << circ.toString();
+  // cout << rect.toString();
+  // cout << sqr.toString();
+  // cout << ova.toString();
+  // cout << circ.toString();
 
-  Rect rect2(rect);
-  Circle cir2(circ);
-  Square sqr2(sqr);
-  Oval ova2(ova);
-  cout << "Copy!!!!!!!! " + rect2.toString();
-  cout << "Copy!!!!!!!! " + cir2.toString();
-  cout << "Copy!!!!!!!! " + sqr2.toString();
-  cout << "Copy!!!!!!!! " + ova2.toString();
+  // Rect rect2(rect);
+  // Circle cir2(circ);
+  // Square sqr2(sqr);
+  // Oval ova2(ova);
+  // cout << "Copy!!!!!!!! " + rect2.toString();
+  // cout << "Copy!!!!!!!! " + cir2.toString();
+  // cout << "Copy!!!!!!!! " + sqr2.toString();
+  // cout << "Copy!!!!!!!! " + ova2.toString();
 
   List<int> l;
+  int current = 80;
   l.InsertItem(1);
   l.InsertItem(2);
   l.InsertItem(3);
   l.InsertItem(4);
-  List<int> l2;
-  l2.InsertItem(12);
-  l2.InsertItem(23);
-  l2.InsertItem(33);
-  l2.InsertItem(44);
+  l.printListtest();
+
+  l.UpdateCurrentItem(current);
+  cout << "\n\n";
 
   l.printListtest();
-  cout << "\n";
-
-  l.ClearList();
-  l.InsertItem(100);
-  cout << "\n";
-  l.printListtest();
-  // l.SwapLists(l2);
-  cout << "\n";
-  l.printListtest();
-  l.DeleteItem();
-  l.DeleteItem();
-  l.DeleteItem();
-  l.DeleteItem();
-  l.printListtest();
+  cout << l.getCount();
 
   return 0;
 }

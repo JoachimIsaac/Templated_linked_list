@@ -20,7 +20,7 @@ public:
 
 	//requires: this list and other are created
 	//ensures:  other is copied to this list
-	// List(List &other);
+	List(List &other);
 
 	void printListtest();
 	// // requires : List is created
@@ -49,7 +49,7 @@ public:
 	// // ensures : Return in Item the item referenced by L's cursor.  The sequence
 	// //           is unchanged and the cursor is not moved
 	// // checks :  if Cursor is at the end of the list, write error message
-	// void GetCurrentItem(ItemType &Item);
+	void GetCurrentItem(ItemType &Item);
 
 	// requires : L is created and the cursor is not at the end of the sequence
 	// ensures : the item referenced by L's cursor is set to the value of I;

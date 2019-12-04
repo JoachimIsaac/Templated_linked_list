@@ -2,6 +2,7 @@
 //File: List.cpp
 //Date:
 
+//working.
 template <class ItemType>
 List<ItemType>::List()
 {
@@ -14,37 +15,45 @@ List<ItemType>::List()
 
 } //  defaultconstructor
 
-// List::List(List &other)
-// {
+//working.
+template <class ItemType>
+List<ItemType>::List(List &other)
+{
 
-//     ItemType Item;
-//     ListNode *temp;
+    ItemType Item;
+    ListNode *temp;
 
-//     //construct empty list - same code as in default constructor goes here
+    //construct empty list - same code as in default constructor goes here
+    ListNode *dummy;
+    dummy = new ListNode;
+    dummy->next = nullptr;
+    this->head = dummy;
+    this->cursor = dummy;
+    this->count = 0;
 
-//     //copy items in other to this list
-//     other.cursor = other.head;
-//     while (other.cursor->next != NULL)
-//     {
-//         Item = other.cursor->next->item;
+    //copy items in other to this list
+    other.cursor = other.head;
+    while (other.cursor->next != NULL)
+    {
+        Item = other.cursor->next->item;
 
-//         temp = new ListNode;
-//         temp->item = Item;
-//         temp->next = cursor->next;
-//         cursor->next = temp;
-//         count++;
+        temp = new ListNode;
+        temp->item = Item;
+        temp->next = cursor->next;
+        cursor->next = temp;
+        count++;
 
-//         other.cursor = other.cursor->next;
-//         cursor = cursor->next;
-//     }
-// }
+        other.cursor = other.cursor->next;
+        cursor = cursor->next;
+    }
+}
 
 template <class ItemType>
 void List<ItemType>::printListtest()
 {
     if (count == 0)
     {
-        cout << "This list is empty";
+        cout << "This list is empty\n";
     }
 
     ListNode *tmp;
@@ -67,6 +76,7 @@ List<ItemType>::~List()
 
 } // destructor
 
+//working
 template <class ItemType>
 void List<ItemType>::SwapLists(List &other)
 {
@@ -89,6 +99,7 @@ void List<ItemType>::SwapLists(List &other)
     other.count = count;
 }
 
+//working
 template <class ItemType>
 void List<ItemType>::ClearList()
 {
@@ -97,14 +108,16 @@ void List<ItemType>::ClearList()
         DeleteItem();
 }
 
+//working
 template <class ItemType>
 void List<ItemType>::ResetCursor()
 {
 
-    this->cursor = head->next;
+    this->cursor = head;
 
 } // reset cursor
 
+//working
 template <class ItemType>
 bool List<ItemType>::CursorAtEnd()
 {
@@ -119,21 +132,28 @@ bool List<ItemType>::CursorAtEnd()
 
 } // cursor at end
 
-// template <class ItemType>
-// void List<ItemType>::GetCurrentItem(ItemType &Item)
-// {
+//working!.
+template <class ItemType>
+void List<ItemType>::GetCurrentItem(ItemType &Item)
+{
+    if (cursor->next != nullptr)
+        Item = cursor->next->item;
+    else
+        cout << "ERROR : cursor at end cannot get current item" << endl;
 
-// } // get current item
+} // get current item
 
-// template <class ItemType>
-// void List<ItemType>::UpdateCurrentItem(const ItemType &Item)
-// {
-//     if (cursor->next == NULL)
-//         cout << "ERROR : cursor at end cannot get current item" << endl;
-//     else
-//         cursor->next->item = Item;
-// } // get current item
+//working!
+template <class ItemType>
+void List<ItemType>::UpdateCurrentItem(const ItemType &Item)
+{
+    if (cursor->next == NULL)
+        cout << "ERROR : cursor at end cannot get current item" << endl;
+    else
+        cursor->next->item = Item;
+} // get current item
 
+//working..
 template <class ItemType>
 void List<ItemType>::AdvanceCursor()
 {
@@ -143,6 +163,7 @@ void List<ItemType>::AdvanceCursor()
         cursor = cursor->next;
 } // advance cursor
 
+//working!
 template <class ItemType>
 void List<ItemType>::InsertItem(const ItemType &Item)
 {
@@ -170,6 +191,7 @@ void List<ItemType>::InsertItem(const ItemType &Item)
     count++;
 }
 
+//working!
 template <class ItemType>
 void List<ItemType>::DeleteItem()
 {
