@@ -69,10 +69,18 @@ template <class ItemType>
 List<ItemType>::~List()
 {
     // ListNode *temp;
-
+    ListNode *temp;
+    ResetCursor();
+    temp = cursor;
     //starting at head of list, delete all nodes
-
+    while (temp != nullptr)
+    {
+        cursor = cursor->next;
+        delete temp;
+        temp = cursor;
+    }
     // dispose of dummy node
+    head = cursor = nullptr;
 
 } // destructor
 
