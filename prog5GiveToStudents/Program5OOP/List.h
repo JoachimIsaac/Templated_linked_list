@@ -5,7 +5,6 @@ using namespace std;
 template <class ItemType>
 class List
 {
-
 	struct ListNode
 	{
 		ItemType item;

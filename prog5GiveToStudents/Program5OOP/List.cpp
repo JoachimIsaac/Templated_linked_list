@@ -37,7 +37,7 @@ List<ItemType>::List(List &other)
     {
         Item = other.cursor->next->item;
 
-        temp = new ListNode;
+        temp = new ListNode();
         temp->item = Item;
         temp->next = cursor->next;
         cursor->next = temp;
@@ -176,21 +176,17 @@ template <class ItemType>
 void List<ItemType>::InsertItem(const ItemType &Item)
 {
     ListNode *temp;
-    if (cursor != head)
-    {
-        ResetCursor();
-    }
 
     if (count == 0)
     {
-        temp = new ListNode;
+        temp = new ListNode();
         temp->item = Item;
         temp->next = nullptr;
         cursor->next = temp;
     }
     else
     {
-        temp = new ListNode;
+        temp = new ListNode();
         temp->item = Item;
         temp->next = cursor->next;
         cursor->next = temp;

@@ -24,7 +24,11 @@ public:
 	void setName(string s) { this->name = s; }
 
 	//methods to override
-	virtual double getArea() = 0;
+	// virtual double getArea() = 0;
+	virtual double getArea()
+	{
+		return 0;
+	}
 
 	virtual string toString() { return "Shape is " + name + ".\t Area is undeterminable.\n"; }
 
@@ -59,9 +63,9 @@ public:
 
 	void set_width(double w) { this->width = w; }
 
-	double getArea() { return length * width; }
+	virtual double getArea() { return length * width; }
 
-	string toString()
+	virtual string toString()
 	{
 		return "Shape is " + getName() + ".\t Area is " + to_string(getArea()) + ".\n";
 	}
@@ -76,6 +80,11 @@ public:
 	Square() { setName("Square"); }
 
 	Square(string s, double side) : Rect("Square", side, side) {}
+
+	virtual string toString()
+	{
+		return "Shape is " + getName() + ".\t Area is " + to_string(getArea()) + ".\n";
+	}
 };
 
 class Oval : public Shape
@@ -96,11 +105,11 @@ public:
 		majorR = other.majorR;
 	}
 
-	double getArea() { return majorR * minorR * 3.14; }
+	virtual double getArea() { return majorR * minorR * 3.14; }
 
-	string toString()
+	virtual string toString()
 	{
-		return "Shape is " + getName() + ".\t Area is " + to_string(getArea()) + ".\n";
+		return "Shape is " + getName() + ".\t\t Area is " + to_string(getArea()) + ".\n";
 	}
 
 	double get_minor_radius() { return this->minorR; }
@@ -130,13 +139,13 @@ public:
 
 	Circle(const Circle &other) : Shape(other.getName()) { this->radius = other.radius; }
 
-	double getArea() { return 3.14 * (radius * radius); }
+	virtual double getArea() { return 3.14 * (radius * radius); }
 
 	double get_radius() { return this->radius; }
 
 	void set_radius(double r) { this->radius = r; }
 
-	string toString()
+	virtual string toString()
 	{
 		return "Shape is " + getName() + ".\t Area is " + to_string(getArea()) + ".\n";
 	}
